@@ -9,15 +9,15 @@ var config = {
 
 // Helper methods to encrypt / decrypt
 var encrypt = function(toEncrypt) {
-    var cipher = crypto.createCipher(config.cryptoAlgo,
-        config.cryptoKey);
+    var cipher =
+        crypto.createCipher(config.cryptoAlgo, config.cryptoKey);
     return cipher.update(toEncrypt, "utf8", "hex") +
         cipher.final("hex");
 };
 
 var decrypt = function(toDecrypt) {
-    var decipher = crypto.createDecipher(config.cryptoAlgo,
-        config.cryptoKey);
+    var decipher =
+        crypto.createDecipher(config.cryptoAlgo, config.cryptoKey);
     return decipher.update(toDecrypt, "hex", "utf8") +
         decipher.final("utf8");
 };
