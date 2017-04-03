@@ -1,0 +1,44 @@
+var express = require('express');
+var session = require('express-session');
+var csrf = require('csurf');
+var bodyParser = require('body-parser');
+
+// Create express app
+var app = express();
+
+// Enable populating req.body object with POST request parameters
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+
+// Use on memoryStore based session on server
+app.use(session({
+    secret: 'secret key here',
+    resave: false,
+    saveUninitialized: true
+}));
+
+// Enable CSRF Protection.
+// Either a cookie-parser or session middleware must be initialized
+// before to this line.
+app.use(csrf());
+
+// Optional CSRF error handler to show a custom error message
+// when the token in a request is missing or mismatches
+app.use(function (err, req, res, next) {
+    // When the CSRF token validation fails, an error is thrown with
+    // an error code 'EBADCSRFTOKEN'.
+    if (err.code !== 'EBADCSRFTOKEN') return next(err);
+    // Display custom error message
+    res.status(403);
+    res.send('form tampered');
+});
+
+app.get('/form', function(req, res) {
+    // pass the csrfToken to the view
+    res.render('send', { csrfToken: req.csrfToken() });
+});
+
+app.post('/changeRole', function(req, res) {
+    res.send('data is being processed');
+});

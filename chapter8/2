@@ -1,0 +1,8 @@
+var express = require("express");
+var bodyParser = require("body-parser");
+var app = express();
+
+// Parse JSON contents from request body using `bodyParser.json()`
+// Not using bodyParser.urlencoded() ignores urlencoded  requests
+// such as plain HTML form submissions
+app.use(bodyParser.json());

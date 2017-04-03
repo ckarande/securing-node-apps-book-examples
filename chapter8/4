@@ -1,0 +1,8 @@
+<form action="/changeRole" method="POST">
+    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+    <label>Account ID:</label>
+    <input type="text" name="accountId"/>
+    <label>New Role: </label>
+    <input type="text" name="newRoleId"/>
+    <button type="submit">Submit</button>
+</form>

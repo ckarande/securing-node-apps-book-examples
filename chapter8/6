@@ -1,0 +1,8 @@
+var methodOverride = require('method-override');
+var csrf = require('csurf');
+
+...
+
+// Include methodOverride middleware before csurf
+app.use(methodOverride('X-HTTP-Method-Override'));
+app.use(csurf());
