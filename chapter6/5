@@ -1,0 +1,21 @@
+// Include crypto module
+var crypto = require("crypto");
+
+//Set keys config object
+var config = {
+    cryptoAlgo: "aes192", // or other secure encryption algo here
+    cryptoKey: "a_secure_key_for_crypto_here"
+};
+
+// Helper methods to encrypt / decrypt
+var encrypt = function(toEncrypt) {
+    var cipher = crypto.createCipher(config.cryptoAlgo, config.cryptoKey);
+    return cipher.update(toEncrypt, "utf8", "hex") + cipher.final("hex");
+};
+
+var decrypt = function(toDecrypt) {
+    var decipher = crypto.createDecipher(config.cryptoAlgo,
+        config.cryptoKey);
+    return decipher.update(toDecrypt, "hex", "utf8") +
+        decipher.final("utf8");
+};

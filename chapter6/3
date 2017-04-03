@@ -1,0 +1,3 @@
+res.set('Cache-Control', 'no-store');
+...
+res.send(sensitiveData);
