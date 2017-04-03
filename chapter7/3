@@ -1,5 +1,7 @@
-// In `config/policies.js`
+// Inside `config/policies.js`
+
 // ...
+
 AccountController: {
     // Apply the `false` policy globally to Controller prevents all access
     // to all of AccountController's actions, making it secure by default.
@@ -12,4 +14,5 @@ AccountController: {
     // Apply the `isLoggedIn` AND `isAdmin` policies to `remove` action
     remove: ['isLoggedIn', 'isAdmin']
 }
+
 // ...
