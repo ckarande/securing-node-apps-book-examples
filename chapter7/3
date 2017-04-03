@@ -2,11 +2,13 @@
 // ...
 AccountController: {
     // Apply the `false` policy globally to Controller prevents all access
-    // to all of AccountController's
+    // to all of AccountController's actions, making it secure by default.
     '*': false,
+
     // Apply the 'isLoggedIn' policy for the view action.
     // This overrides the `false` value set as global policy.
     view : 'isLoggedIn',
+
     // Apply the `isLoggedIn` AND `isAdmin` policies to `remove` action
     remove: ['isLoggedIn', 'isAdmin']
 }
