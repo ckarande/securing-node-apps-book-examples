@@ -1,0 +1,14 @@
+var app = express();
+app.set('trust proxy', 1); // Trust first proxy
+app.use(session({
+resave: false,
+saveUninitialized: true,
+secret: '...',
+cookie: {
+httpOnly: true, // Prevent cookie accessed by JavaScript code
+secure: true, // Prevent browser sending cookie on
+              // unencrypted connection
+maxAge: 10 * 60 * 1000 // 10 minutes
+}
+}));
+app.listen(80);

@@ -1,0 +1,11 @@
+var express = require('express');
+var session = require('express-session');
+var app = express();
+app.use(session({
+resave: false, // Prevent saving session if unmodified
+saveUninitialized: false, // Prevent creating session until
+                          // something to store
+secret: '...', // Secret key gets used to sign the cookie.
+cookie: {}
+}));
+app.listen(80);

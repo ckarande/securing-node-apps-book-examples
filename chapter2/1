@@ -1,0 +1,7 @@
+var bcrypt = require('bcrypt');
+
+bcrypt.genSalt(12, function(err, salt) {
+bcrypt.hash(user.password, salt, function(err, hash) {
+// Store hash in the password database.
+});
+});

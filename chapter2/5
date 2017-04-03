@@ -1,0 +1,3 @@
+req.session.regenerate(function(err) {
+// A new session here
+})

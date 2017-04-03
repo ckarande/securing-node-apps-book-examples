@@ -1,0 +1,5 @@
+// The hash below is the encrypted password from the database.
+bcrypt.compare(user.password, hash, function(err, res) {
+// res == true for correct password
+// res == false for wrong password
+});
