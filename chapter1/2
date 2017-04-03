@@ -1,4 +1,3 @@
-
 child_process.exec(
 'gzip ' + req.body.file_path, function (err, data) {
   console.log(data);
