@@ -1,0 +1,2 @@
+SELECT * FROM accounts WHERE username = 'admin';
+DELETE FROM accounts;

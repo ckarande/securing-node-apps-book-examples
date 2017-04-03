@@ -1,0 +1,4 @@
+db.accounts.find({
+username: post_username,
+password: post_password
+});

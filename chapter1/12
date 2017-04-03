@@ -1,0 +1,4 @@
+db.myCollection.find({
+active: true,
+$where: function() { return obj.age < post_user_input; }
+});

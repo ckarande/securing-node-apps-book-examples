@@ -1,3 +1,4 @@
+
 connection.query(
 'SELECT * FROM accounts WHERE username ="'
 + req.body.username + '" AND password = "' + passwordHash + '"', function(err, rows, fields) {

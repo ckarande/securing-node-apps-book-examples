@@ -1,0 +1,6 @@
+var _ = require('lodash');
+...
+if (!_.contains(['ASC', 'DESC'], order.toUpperCase())) {
+    throw new Error(util.format(
+        'Order must be \'ASC\' or \'DESC\', \'%s\' given', order));
+}

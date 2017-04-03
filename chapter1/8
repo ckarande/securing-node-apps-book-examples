@@ -1,0 +1,4 @@
+Test.findAndCountAll({
+where: { id :1 },
+order : [['id', 'UNTRUSTED USER INPUT']]
+})

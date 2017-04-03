@@ -1,1 +1,2 @@
+
 SELECT * FROM accounts WHERE username = 'admin'
