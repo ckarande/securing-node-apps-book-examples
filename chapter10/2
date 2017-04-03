@@ -1,0 +1,16 @@
+handleLoginPost = function (req, res, next) {
+    userDAO.validateLogin(req.body.userName, req.body.password,
+        function(err, user) {
+        if (err) {
+            return res.render("login", {
+                loginError: 'Invalid username or password'
+            });
+        }
+        var redirectPath = req.signedCookies.redirectOnLogin;
+        if (redirectPath) {
+            res.clearCookie('redirectOnLogin');
+            return res.render(redirectPath, user)
+        }
+        return res.render('/home', user); //default landing page
+    });
+};

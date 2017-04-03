@@ -1,0 +1,13 @@
+var app = express();
+// White list of valid redirect urls
+var validRedirectURLs = ['www.affiliate1.com', 'www.affiliate2.com',
+    'www.affiliate3.com'];
+
+app.get("/offers", function(req, res, next) {
+    var redirectTo = req.query.redirect;
+    if(validRedirectURLs.includes(redirectTo)) {
+        return res.redirect(redirectTo);
+    } else {
+        return res.status(500).send({ error: 'Invalid URL' });
+    }
+});

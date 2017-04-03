@@ -1,0 +1,7 @@
+var app = express();
+
+app.get("/offers", function(req, res, next) {
+  // Some logic to track user activity here ...
+  // Once done, take the user to the destination site
+  return res.redirect(req.query.redirect);
+});
