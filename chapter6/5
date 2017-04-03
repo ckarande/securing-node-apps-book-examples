@@ -9,8 +9,10 @@ var config = {
 
 // Helper methods to encrypt / decrypt
 var encrypt = function(toEncrypt) {
-    var cipher = crypto.createCipher(config.cryptoAlgo, config.cryptoKey);
-    return cipher.update(toEncrypt, "utf8", "hex") + cipher.final("hex");
+    var cipher = crypto.createCipher(config.cryptoAlgo,
+        config.cryptoKey);
+    return cipher.update(toEncrypt, "utf8", "hex") +
+        cipher.final("hex");
 };
 
 var decrypt = function(toDecrypt) {

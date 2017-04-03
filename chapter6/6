@@ -1,0 +1,7 @@
+// Encrypt values before saving in database
+user.ssn = encrypt(ssn);
+user.dob = encrypt(dob);
+
+// Decrypt values to show on view
+user.ssn = decrypt(user.ssn);
+user.dob = decrypt(user.dob);
