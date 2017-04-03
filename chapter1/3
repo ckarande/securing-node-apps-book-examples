@@ -1,0 +1,8 @@
+// Extract user input from request
+var file_path = req.body.file_path;
+// Execute gzip command
+child_process.execFile( 'gzip',
+[file_path],
+function (err, data) {
+  console.log(data);
+ });
