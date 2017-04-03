@@ -3,8 +3,8 @@
 // ...
 
 AccountController: {
-    // Apply the `false` policy globally to Controller prevents all access
-    // to all of AccountController's actions, making it secure by default.
+    // Apply the `false` policy globally to the Controller to prevent
+    // access to all AccountController's actions, making it secure by default.
     '*': false,
 
     // Apply the 'isLoggedIn' policy for the view action.
