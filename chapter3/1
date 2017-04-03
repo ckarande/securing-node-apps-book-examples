@@ -1,0 +1,7 @@
+var policy = {
+  defaultPolicy: {
+    "default-src": ["'self'"],
+    "img-src": ["static.example.com"]
+  }
+}
+helmet.csp.policy(policy);
