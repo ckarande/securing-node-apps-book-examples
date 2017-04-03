@@ -1,0 +1,17 @@
+module.exports = function isAdmin (req, res, next) {
+  if (req.session.userId) {
+    userDAO.getUserById(req.session.userId, function(err, user) {
+      // Check isAdmin property on user object
+      if(user && user.isAdmin) {
+        // Allow invoking the action for a admin user
+        next();
+      } else {
+        // Redirect a non-admin user to the login route
+        return res.redirect("/login");
+      }
+    });
+  } else {
+    // Redirect an unauthenticated user to the login route
+    return res.redirect("/login");
+  }
+};

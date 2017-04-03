@@ -1,0 +1,1 @@
+app.post("/remove", isLoggedIn, isAdmin, accountHandler.removeAccount);
