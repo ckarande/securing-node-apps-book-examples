@@ -1,23 +1,30 @@
 // Include crypto module
-var crypto = require("crypto");
+const crypto = require("crypto");
 
-//Set keys config object
-var config = {
-    cryptoAlgo: "aes192", // or other secure encryption algo here
-    cryptoKey: "a_secure_key_for_crypto_here"
-};
+// Set a 256 bit encryption key
+const key = process.env.ENCRYPTION_KEY;
+const algorithm = 'aes-256-cbc';
 
 // Helper methods to encrypt / decrypt
-var encrypt = function(toEncrypt) {
-    var cipher =
-        crypto.createCipher(config.cryptoAlgo, config.cryptoKey);
-    return cipher.update(toEncrypt, "utf8", "hex") +
-        cipher.final("hex");
+const encrypt = (plainText) => {
+   // Generate random Initialization Vector for each encryption
+   const iv = crypto.randomBytes(16); // Always 16 bytes for AES
+   // Create AES cipher instance
+   const cipher = crypto.createCipheriv(algorithm, 
+   new Buffer.from(key), iv);
+   // Encrypt plaintext
+   cipher.end(plainText);
+  // Add IV to the encrypted value to store together
+   return iv.toString('hex') + '.' + cipher.read().toString('hex');
 };
 
-var decrypt = function(toDecrypt) {
-    var decipher =
-        crypto.createDecipher(config.cryptoAlgo, config.cryptoKey);
-    return decipher.update(toDecrypt, "hex", "utf8") +
-        decipher.final("utf8");
+const decrypt = (encrypted) => {
+   // Extract IV and encrypted text from the input
+   const textParts = encrypted.split('.');
+   const iv = Buffer.from(textParts.shift(), 'hex');
+   const encryptedText = Buffer.from(textParts.shift(), 'hex');
+   // Decrypt using createDecipheriv
+   const decipher = crypto.createDecipheriv(algorithm, Buffer.from(key), iv);
+   decipher.end(encryptedText);
+   return decipher.read().toString();
 };
